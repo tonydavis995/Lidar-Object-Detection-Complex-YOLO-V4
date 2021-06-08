@@ -8,7 +8,6 @@ from utils.logger import Logger
 from config.train_config import parse_train_configs
 from evaluate import evaluate_mAP
 from torch.utils.tensorboard import SummaryWriter
-from tfrecord.torch.dataset import TFRecordDataset
 
 import time
 import os
