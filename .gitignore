@@ -1,4 +1,5 @@
 .idea
 checkpoints/
-dataset/
+dataset/kitti/testing
+dataset/kitti/training
 logs/

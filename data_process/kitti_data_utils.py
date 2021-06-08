@@ -97,7 +97,7 @@ class Calibration(object):
         x_rect = R0_rect * x_ref
 
         P^2_rect = [f^2_u,  0,      c^2_u,  -f^2_u b^2_x;
-                    0,      f^2_v,  c^2_v,  -f^2_v b^2_y;
+                    0,      f^2_v, lidarData c^2_v,  -f^2_v b^2_y;
                     0,      0,      1,      0]
                  = K * [1|t]
 

@@ -78,7 +78,7 @@ def parse_train_configs():
 
     parser.add_argument('--start_epoch', type=int, default=1, metavar='N',
                         help='the starting epoch')
-    parser.add_argument('--num_epochs', type=int, default=300, metavar='N',
+    parser.add_argument('--num_epochs', type=int, default=150, metavar='N',
                         help='number of total epochs to run')
     parser.add_argument('--lr_type', type=str, default='cosin',
                         help='the type of learning rate scheduler (cosin or multi_step)')

@@ -8,6 +8,7 @@ from utils.logger import Logger
 from config.train_config import parse_train_configs
 from evaluate import evaluate_mAP
 from torch.utils.tensorboard import SummaryWriter
+from tfrecord.torch.dataset import TFRecordDataset
 
 import time
 import os
@@ -118,7 +119,7 @@ def train(configs):
             logger.info('resume training model from checkpoint {}'.format(configs.resume_path))
 
     # Assign model to cuda.
-    print(configs)
+    torch.cuda.empty_cache()
     torch.cuda.set_device(0)
     model = model.cuda(configs.gpu_idx)
 
@@ -145,6 +146,7 @@ def train(configs):
 
     # Create dataloader
     train_dataloader, train_sampler = create_train_dataloader(configs)
+
     if logger is not None:
         logger.info('number of batches in training set: {}'.format(len(train_dataloader)))
 
