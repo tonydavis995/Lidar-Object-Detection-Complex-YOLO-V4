@@ -1,4 +1,6 @@
 
+# Training with YOLO v4
+
 from data_process.kitti_dataloader import create_train_dataloader, create_val_dataloader
 from models.model_utils import create_model, get_num_parameters
 from utils.train_utils import create_optimizer, create_lr_scheduler, get_saved_state, save_checkpoint
@@ -83,7 +85,6 @@ def train_one_epoch(train_dataloader, model, optimizer, lr_scheduler, epoch, con
 
 def main():
     configs = parse_train_configs()
-    # Provision for reproduce results add multi thread distributed processing
     train(configs)
 
 
@@ -100,7 +101,7 @@ def train(configs):
         logger = None
         tb_writer = None
 
-    # Import Model Config Yolo V4 / Tiny YoloV4 based on MSE/GIoU/CIoU
+    # Import Model Config Yolo V4 based on MSE/GIoU/DIoU
     model = create_model(configs)
 
     # Load weight from a checkpoint

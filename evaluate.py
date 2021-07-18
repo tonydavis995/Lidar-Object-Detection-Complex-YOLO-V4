@@ -76,7 +76,7 @@ def parse_eval_configs():
                         help='the path of the pretrained checkpoint')
     parser.add_argument('--use_giou_loss', action='store_true',
                         help='If true, use GIoU loss during training. If false, use MSE loss for training')
-    parser.add_argument('--use_ciou_loss', action='store_true',
+    parser.add_argument('--use_diou_loss', action='store_true',
                         help='If true, use GIoU loss during training. If false, use MSE loss for training')
 
     parser.add_argument('--no_cuda', action='store_true',

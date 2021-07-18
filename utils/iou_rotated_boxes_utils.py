@@ -134,8 +134,17 @@ def iou_pred_vs_target_boxes(pred_boxes, target_boxes, GIoU=False, DIoU=False, C
         else:
             giou_loss += 1. - iou
 
-        if DIoU or CIoU:
-            raise NotImplementedError
+        if DIoU:
+            """calculated 3d DIoU loss. assume the 3d bounding boxes are only rotated around z axis"""
+            iou3d, corners1, corners2, z_range, u3d = intersection_area(p_cons, t_cons, verbose=True)
+            w, h = PolyArea2D(corners1, corners2, convex_conners)
+            x_offset = corners1[...,1] - corners1[..., 2]
+            y_offset = corners2[...,1] - corners2[..., 2]
+            z_offset = z_range[...,1] - z_range[..., 2]
+            d2 = x_offset*x_offset + y_offset*y_offset + z_offset*z_offset
+            c2 = w*w + h*h + z_range*z_range
+            diou = 1. - iou3d + d2/c2
+            iou = diou
 
         ious.append(iou)
 

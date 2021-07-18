@@ -11,7 +11,7 @@ def create_model(config):
     if (config.arch == 'darknet') and (config.cfgfile is not None):
         print('using darknet')
         model_data = Darknet(
-            cfgfile=config.cfgfile, use_giou_loss=config.use_giou_loss, use_ciou_loss=config.use_ciou_loss)
+            cfgfile=config.cfgfile, use_giou_loss=config.use_giou_loss, use_diou_loss=config.use_diou_loss)
     else:
         assert False, 'Undefined model backbone'
 
